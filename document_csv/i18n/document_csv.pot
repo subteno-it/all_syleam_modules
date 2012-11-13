@@ -1,0 +1,726 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* document_csv
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 6.0.2\n"
+"Report-Msgid-Bugs-To: support@openerp.com\n"
+"POT-Creation-Date: 2011-06-13 09:32+0000\n"
+"PO-Revision-Date: 2011-06-13 09:32+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: document_csv
+#: selection:document.import.list.line,relation:0
+msgid "DB ID"
+msgstr ""
+
+#. module: document_csv
+#: selection:document.import.format,type:0
+#: field:document.import.list,format_time:0
+msgid "Time"
+msgstr ""
+
+#. module: document_csv
+#: code:addons/document_csv/object/export.py:68
+#, python-format
+msgid "Bad domain value"
+msgstr ""
+
+#. module: document_csv
+#: model:ir.actions.act_window,name:document_csv.action_document_import_format
+#: model:ir.ui.menu,name:document_csv.menu_document_import_format
+msgid "Import format"
+msgstr ""
+
+#. module: document_csv
+#: selection:document.import.format,type:0
+#: field:document.import.list,format_datetime:0
+msgid "DateTime"
+msgstr ""
+
+#. module: document_csv
+#: model:ir.actions.act_window,name:document_csv.action_document_import_list
+#: model:ir.ui.menu,name:document_csv.menu_document_import_list
+msgid "Document import list"
+msgstr ""
+
+#. module: document_csv
+#: wizard_view:document_csv.import,init:0
+msgid "Import CSV structure"
+msgstr ""
+
+#. module: document_csv
+#: field:document.import.list,mail_body:0
+#: field:document.import.list,mail_body_err:0
+msgid "Body"
+msgstr ""
+
+#. module: document_csv
+#: view:document.import.list:0
+msgid "%M for Minutes (eg: 59)"
+msgstr ""
+
+#. module: document_csv
+#: help:document.import.list,ctx:0
+msgid "this part complete the original context"
+msgstr ""
+
+#. module: document_csv
+#: model:ir.model,name:document_csv.model_ir_attachment
+msgid "ir.attachment"
+msgstr ""
+
+#. module: document_csv
+#: selection:document.import.list,encoding:0
+msgid "Latin 1"
+msgstr ""
+
+#. module: document_csv
+#: code:addons/document_csv/wizard/import_yml.py:86
+#, python-format
+msgid "Ok"
+msgstr ""
+
+#. module: document_csv
+#: selection:document.import.list,encoding:0
+msgid "Latin 9"
+msgstr ""
+
+#. module: document_csv
+#: wizard_view:document_csv.export,init:0
+#: model:ir.actions.wizard,name:document_csv.document_csv_export_wizard
+msgid "Export structure"
+msgstr ""
+
+#. module: document_csv
+#: wizard_field:document_csv.export,init,name:0
+msgid "File name"
+msgstr ""
+
+#. module: document_csv
+#: field:document.import.list,err_mail:0
+msgid "Send log by mail"
+msgstr ""
+
+#. module: document_csv
+#: field:document.import.list,name:0
+msgid "Import name"
+msgstr ""
+
+#. module: document_csv
+#: field:wizard.launch.import.csv,import_file:0
+msgid "Filename"
+msgstr ""
+
+#. module: document_csv
+#: help:document.import.list.line,refkey:0
+msgid "If check, this key is equal to ID in manual import"
+msgstr ""
+
+#. module: document_csv
+#: field:document.import.list,backup_dir_id:0
+msgid "Backup directory"
+msgstr ""
+
+#. module: document_csv
+#: wizard_button:document_csv.export,init,valid:0
+#: wizard_button:document_csv.import,init,valid:0
+msgid "OK"
+msgstr ""
+
+#. module: document_csv
+#: help:document.import.list.line,create:0
+msgid "If check, if entry doesn't exist, it must be created"
+msgstr ""
+
+#. module: document_csv
+#: field:document.import.list,encoding:0
+msgid "Encoding"
+msgstr ""
+
+#. module: document_csv
+#: help:document.import.list.line,relation:0
+msgid "Search use name_search to match the record"
+msgstr ""
+
+#. module: document_csv
+#: view:document.import.list:0
+msgid "%m for Month (eg: 09)"
+msgstr ""
+
+#. module: document_csv
+#: help:document.import.list,format_date:0
+msgid "Select the date format on the csv file"
+msgstr ""
+
+#. module: document_csv
+#: model:ir.ui.menu,name:document_csv.menu_document_exchange
+msgid "Document exchange"
+msgstr ""
+
+#. module: document_csv
+#: code:addons/document_csv/object/document.py:162
+#: code:addons/document_csv/object/export.py:75
+#: code:addons/document_csv/object/export.py:94
+#, python-format
+msgid "Syntax error\n"
+"* %r"
+msgstr ""
+
+#. module: document_csv
+#: help:document.import.list,format_datetime:0
+msgid "Select the datetime format on the csv file"
+msgstr ""
+
+#. module: document_csv
+#: help:document.import.list,notes:0
+msgid "Add note for this import "
+msgstr ""
+
+#. module: document_csv
+#: view:document.import.list:0
+msgid "From"
+msgstr ""
+
+#. module: document_csv
+#: help:document.import.list,format_time:0
+msgid "Select the time format on the csv file"
+msgstr ""
+
+#. module: document_csv
+#: field:document.import.list.line,create:0
+msgid "Create entry"
+msgstr ""
+
+#. module: document_csv
+#: field:document.import.list.line,relation:0
+msgid "Field relation"
+msgstr ""
+
+#. module: document_csv
+#: view:document.import.list:0
+msgid "Legend to format mail"
+msgstr ""
+
+#. module: document_csv
+#: help:document.import.list,err_mail:0
+msgid "The log file was send to all users of the groupes"
+msgstr ""
+
+#. module: document_csv
+#: help:document.import.list,mail_cc:0
+#: help:document.import.list,mail_cc_err:0
+#: help:document.import.list,mail_from:0
+msgid "Add cc mail, separate by comma"
+msgstr ""
+
+#. module: document_csv
+#: field:document.import.format,type:0
+msgid "Type"
+msgstr ""
+
+#. module: document_csv
+#: view:document.import.list:0
+#: field:wizard.launch.import.csv,email_result:0
+msgid "Email"
+msgstr ""
+
+#. module: document_csv
+#: field:document.import.list,log_filename:0
+msgid "Log filename"
+msgstr ""
+
+#. module: document_csv
+#: view:document.import.list:0
+msgid "Import file information"
+msgstr ""
+
+#. module: document_csv
+#: code:addons/document_csv/object/export.py:78
+#, python-format
+msgid "The domain must be start with [ and ending with ]\n"
+"* %r"
+msgstr ""
+
+#. module: document_csv
+#: view:document.import.list:0
+msgid "Legend to format filename"
+msgstr ""
+
+#. module: document_csv
+#: wizard_field:document_csv.import,init,filename:0
+msgid "Select File"
+msgstr ""
+
+#. module: document_csv
+#: model:ir.actions.act_window,name:document_csv.action_wizard_launch_import_csv_view
+#: model:ir.ui.menu,name:document_csv.menu_launch_import_wizard
+#: view:wizard.launch.import.csv:0
+msgid "Import Form"
+msgstr ""
+
+#. module: document_csv
+#: view:document.import.list:0
+msgid "%y for year in 2 digits"
+msgstr ""
+
+#. module: document_csv
+#: field:document.import.list.line,list_id:0
+msgid "Line"
+msgstr ""
+
+#. module: document_csv
+#: code:addons/document_csv/wizard/import_yml.py:86
+#, python-format
+msgid "Cool"
+msgstr ""
+
+#. module: document_csv
+#: view:document.import.list:0
+msgid "To"
+msgstr ""
+
+#. module: document_csv
+#: wizard_view:document_csv.import,init:0
+#: view:wizard.launch.import.csv:0
+msgid "Select file to import"
+msgstr ""
+
+#. module: document_csv
+#: help:document.import.list,backup_dir_id:0
+#: help:document.import.list,log_dir_id:0
+msgid "Select directory where the backup file was put"
+msgstr ""
+
+#. module: document_csv
+#: view:document.import.list:0
+msgid "Logging"
+msgstr ""
+
+#. module: document_csv
+#: code:addons/document_csv/wizard/export_yml.py:48
+#: code:addons/document_csv/wizard/import_yml.py:45
+#, python-format
+msgid "Python Yaml Module not found, see description module"
+msgstr ""
+
+#. module: document_csv
+#: field:wizard.launch.import.csv,import_list:0
+msgid "List"
+msgstr ""
+
+#. module: document_csv
+#: wizard_button:document_csv.export,init,end:0
+#: wizard_button:document_csv.import,init,end:0
+#: view:wizard.launch.import.csv:0
+msgid "Cancel"
+msgstr ""
+
+#. module: document_csv
+#: help:document.import.list,backup:0
+msgid "If check, the original file is backup, before remove from the directory"
+msgstr ""
+
+#. module: document_csv
+#: model:ir.ui.menu,name:document_csv.menu_document_csv_import
+msgid "Import Structure"
+msgstr ""
+
+#. module: document_csv
+#: model:ir.model,name:document_csv.model_wizard_launch_import_csv
+msgid "Interface to launch CSV import"
+msgstr ""
+
+#. module: document_csv
+#: code:addons/document_csv/wizard/import_yml.py:76
+#, python-format
+msgid "Source directory reference not found"
+msgstr ""
+
+#. module: document_csv
+#: view:document.import.format:0
+msgid "Format list"
+msgstr ""
+
+#. module: document_csv
+#: selection:document.import.list,encoding:0
+msgid "UTF 8"
+msgstr ""
+
+#. module: document_csv
+#: help:document.import.list,backup_filename:0
+msgid "Indique the name of the file to backup, see legend at bottom"
+msgstr ""
+
+#. module: document_csv
+#: view:document.import.format:0
+#: view:document.import.list:0
+#: view:document.import.list.line:0
+msgid "Import list"
+msgstr ""
+
+#. module: document_csv
+#: view:document.import.list:0
+msgid "%U for Week number of the year"
+msgstr ""
+
+#. module: document_csv
+#: view:document.import.list:0
+msgid "%Y for Year (eg: 2009)"
+msgstr ""
+
+#. module: document_csv
+#: selection:document.import.list,encoding:0
+msgid "CP 850 IBM"
+msgstr ""
+
+#. module: document_csv
+#: field:document.import.list,csv_esc:0
+msgid "Escape"
+msgstr ""
+
+#. module: document_csv
+#: view:document.import.list:0
+msgid "On success"
+msgstr ""
+
+#. module: document_csv
+#: field:document.import.list,csv_sep:0
+msgid "Separator"
+msgstr ""
+
+#. module: document_csv
+#: view:document.import.list:0
+#: field:document.import.list,mail_subject:0
+#: field:document.import.list,mail_subject_err:0
+msgid "Subject"
+msgstr ""
+
+#. module: document_csv
+#: view:document.import.list:0
+msgid "Log"
+msgstr ""
+
+#. module: document_csv
+#: field:document.import.list,err_reject:0
+msgid "Reject all if error"
+msgstr ""
+
+#. module: document_csv
+#: field:document.import.list,notes:0
+msgid "Note"
+msgstr ""
+
+#. module: document_csv
+#: view:wizard.launch.import.csv:0
+msgid "Start"
+msgstr ""
+
+#. module: document_csv
+#: help:wizard.launch.import.csv,import_list:0
+msgid "List of available import structure"
+msgstr ""
+
+#. module: document_csv
+#: view:document.import.list:0
+msgid "Reject"
+msgstr ""
+
+#. module: document_csv
+#: view:document.import.list:0
+msgid "Columns"
+msgstr ""
+
+#. module: document_csv
+#: help:wizard.launch.import.csv,email_result:0
+msgid "Email to send notification when import is finished"
+msgstr ""
+
+#. module: document_csv
+#: field:document.import.list,backup_filename:0
+msgid "Backup filename"
+msgstr ""
+
+#. module: document_csv
+#: field:document.import.list,reject_filename:0
+msgid "Reject filename"
+msgstr ""
+
+#. module: document_csv
+#: view:document.import.list:0
+msgid "On error"
+msgstr ""
+
+#. module: document_csv
+#: code:addons/document_csv/object/document.py:155
+#: code:addons/document_csv/object/export.py:87
+#, python-format
+msgid "Bad context value"
+msgstr ""
+
+#. module: document_csv
+#: help:document.import.list,mail_subject:0
+#: help:document.import.list,mail_subject_err:0
+msgid "You can used format to the subject"
+msgstr ""
+
+#. module: document_csv
+#: code:addons/document_csv/wizard/import_yml.py:67
+#, python-format
+msgid "No model name %s found"
+msgstr ""
+
+#. module: document_csv
+#: selection:document.import.format,type:0
+#: field:document.import.list,format_date:0
+msgid "Date"
+msgstr ""
+
+#. module: document_csv
+#: selection:document.import.list.line,relation:0
+msgid "Search"
+msgstr ""
+
+#. module: document_csv
+#: wizard_field:document_csv.export,init,filename:0
+msgid "Select a filename, and save it"
+msgstr ""
+
+#. module: document_csv
+#: field:document.import.list,mail_cc:0
+#: field:document.import.list,mail_cc_err:0
+#: field:document.import.list,mail_from:0
+msgid "CC"
+msgstr ""
+
+#. module: document_csv
+#: code:addons/document_csv/object/document.py:154
+#: code:addons/document_csv/object/export.py:67
+#: code:addons/document_csv/object/export.py:86
+#: code:addons/document_csv/wizard/export_yml.py:48
+#: code:addons/document_csv/wizard/import_yml.py:45
+#: code:addons/document_csv/wizard/import_yml.py:66
+#: code:addons/document_csv/wizard/import_yml.py:76
+#: code:addons/document_csv/wizard/import_yml.py:108
+#: code:addons/document_csv/wizard/import_yml.py:123
+#, python-format
+msgid "Error"
+msgstr ""
+
+#. module: document_csv
+#: code:addons/document_csv/wizard/import_yml.py:108
+#, python-format
+msgid "No field %s found in the object"
+msgstr ""
+
+#. module: document_csv
+#: view:document.import.list:0
+msgid "%(count)s: Number of imported lines"
+msgstr ""
+
+#. module: document_csv
+#: view:document.import.list:0
+msgid "Backup"
+msgstr ""
+
+#. module: document_csv
+#: help:document.import.format,name:0
+msgid "This field content depend to the type, see legend"
+msgstr ""
+
+#. module: document_csv
+#: help:document.import.list,reject_dir_id:0
+msgid "Select the directory wher the reject file was put"
+msgstr ""
+
+#. module: document_csv
+#: selection:document.import.list,encoding:0
+msgid "CP 1252 Windows"
+msgstr ""
+
+#. module: document_csv
+#: field:document.import.list,reject_dir_id:0
+msgid "Reject directory"
+msgstr ""
+
+#. module: document_csv
+#: view:document.import.list:0
+msgid "General"
+msgstr ""
+
+#. module: document_csv
+#: model:ir.model,name:document_csv.model_document_import_list_line
+msgid "Document importation list line"
+msgstr ""
+
+#. module: document_csv
+#: view:document.import.list:0
+msgid "%j for day of the year (eg: 365)"
+msgstr ""
+
+#. module: document_csv
+#: model:ir.model,name:document_csv.model_document_import_format
+msgid "Define date and number format"
+msgstr ""
+
+#. module: document_csv
+#: view:wizard.launch.import.csv:0
+msgid "Select format for this import"
+msgstr ""
+
+#. module: document_csv
+#: help:document.import.list,disable:0
+msgid "Check this, if you want to disable it"
+msgstr ""
+
+#. module: document_csv
+#: code:addons/document_csv/wizard/import_yml.py:123
+#, python-format
+msgid "Failed to create the list entry"
+msgstr ""
+
+#. module: document_csv
+#: field:document.import.list,log_dir_id:0
+msgid "Log directory"
+msgstr ""
+
+#. module: document_csv
+#: field:document.import.list.line,field_id:0
+msgid "Field"
+msgstr ""
+
+#. module: document_csv
+#: view:document.import.list:0
+msgid "%S for Second (eg: 01)"
+msgstr ""
+
+#. module: document_csv
+#: field:document.import.format,name:0
+#: view:document.import.list:0
+msgid "Format"
+msgstr ""
+
+#. module: document_csv
+#: view:wizard.launch.import.csv:0
+msgid "Email to send notificaiton when import is finished"
+msgstr ""
+
+#. module: document_csv
+#: view:document.import.list:0
+msgid "Mail body"
+msgstr ""
+
+#. module: document_csv
+#: field:document.import.list.line,name:0
+msgid "Field name"
+msgstr ""
+
+#. module: document_csv
+#: model:ir.ui.menu,name:document_csv.menu_document_import_configuration
+msgid "Exchange Datas"
+msgstr ""
+
+#. module: document_csv
+#: field:document.import.list,disable:0
+msgid "Disable"
+msgstr ""
+
+#. module: document_csv
+#: model:ir.actions.wizard,name:document_csv.document_csv_import_wizard
+msgid "Import structure"
+msgstr ""
+
+#. module: document_csv
+#: view:document.import.list:0
+msgid "%d for Day (eg: 01)"
+msgstr ""
+
+#. module: document_csv
+#: view:document.import.list:0
+msgid "Notes"
+msgstr ""
+
+#. module: document_csv
+#: view:document.import.list:0
+msgid "%H for Hour (eg: 14)"
+msgstr ""
+
+#. module: document_csv
+#: code:addons/document_csv/object/document.py:165
+#: code:addons/document_csv/object/export.py:97
+#, python-format
+msgid "The context must be start with { and ending with }\n"
+"* %r"
+msgstr ""
+
+#. module: document_csv
+#: model:ir.model,name:document_csv.model_ir_model_fields
+msgid "Fields"
+msgstr ""
+
+#. module: document_csv
+#: field:document.import.list.line,refkey:0
+msgid "Reference Key"
+msgstr ""
+
+#. module: document_csv
+#: field:document.import.list,line_ids:0
+msgid "Lines"
+msgstr ""
+
+#. module: document_csv
+#: help:document.import.list,err_reject:0
+msgid "Reject all lines if there is an error"
+msgstr ""
+
+#. module: document_csv
+#: field:document.import.list,ctx:0
+msgid "Context"
+msgstr ""
+
+#. module: document_csv
+#: help:document.import.format,type:0
+msgid "Select the type of the format"
+msgstr ""
+
+#. module: document_csv
+#: field:document.import.list,model_id:0
+msgid "Model"
+msgstr ""
+
+#. module: document_csv
+#: help:document.import.list,reject_filename:0
+msgid "Indique the name of the reject file, see legend at bottom"
+msgstr ""
+
+#. module: document_csv
+#: selection:document.import.list.line,relation:0
+msgid "ID"
+msgstr ""
+
+#. module: document_csv
+#: wizard_view:document_csv.export,init:0
+msgid "The export file is available, save it to a local drive"
+msgstr ""
+
+#. module: document_csv
+#: help:document.import.list,log_filename:0
+msgid "Indique the name of the log file, see legend at bottom"
+msgstr ""
+
+#. module: document_csv
+#: model:ir.model,name:document_csv.model_document_import_list
+msgid "Document importation list"
+msgstr ""
+
+#. module: document_csv
+#: field:document.import.list,backup:0
+msgid "Store the backup"
+msgstr ""
+

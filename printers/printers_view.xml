@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        ##############################################################################
+        #
+        #    printers module for OpenERP, Allow to manage printers un OpenERP
+        #    Copyright (C) 2011 SYLEAM Info Services ([http://www.Syleam.fr/])
+        #              Sylvain Garancher [sylvain.garancher@syleam.fr]
+        #              Christophe CHAUVET [christophe.chauvet@syleam.fr]
+        #
+        #    This file is a part of printers
+        #
+        #    printers is free software: you can redistribute it and/or modify
+        #    it under the terms of the GNU Affero General Public License as published by
+        #    the Free Software Foundation, either version 3 of the License, or
+        #    (at your option) any later version.
+        #
+        #    printers is distributed in the hope that it will be useful,
+        #    but WITHOUT ANY WARRANTY; without even the implied warranty of
+        #    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        #    GNU Affero General Public License for more details.
+        #
+        #    You should have received a copy of the GNU Affero General Public License
+        #    along with this program.  If not, see [http://www.gnu.org/licenses/].
+        #
+        ##############################################################################
+
+        #
+        # Printers server
+        #
+        <record model="ir.ui.view" id="res_printer_server_tree">
+            <field name="name">printers.server.tree</field>
+            <field name="model">printers.server</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <tree string="Server">
+                    <field name="server"/>
+                    <field name="address"/>
+                    <field name="port"/>
+                    <field name="user"/>
+                    <field name="active"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="res_printer_server_form">
+            <field name="name">printers.server.form</field>
+            <field name="model">printers.server</field>
+            <field name="type">form</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <form string="Server">
+                    <field name="server" select="1"/>
+                    <field name="address" select="1"/>
+                    <field name="port"/>
+                    <field name="active" select="2"/>
+                    <field name="user"/>
+                    <field name="password" password="True"/>
+                    <field name="printer_ids" nolabel="1" colspan="4">
+                        <tree string="Printer per server">
+                            <field name="code"/>
+                            <field name="name"/>
+                            <field name="type_id"/>
+                            <field name="active"/>
+                        </tree>
+                        <form string="Printers per server">
+                            <field name="name" select="1"/>
+                            <field name="code" select="1"/>
+                            <field name="type_id" select="2"/>
+                            <field name="manufacturer_id" select="2"/>
+                            <field name="active" select="2"/>
+                            <notebook colspan="4">
+                                <page string="Options">
+                                    <separator string="Specify parameter for this printer" colspan="4"/>
+                                    <field name="fitplot"/>
+                                </page>
+                            </notebook>
+                        </form>
+                    </field>
+                </form>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="res_printer_server_action">
+            <field name="name">Printing Server</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">printers.server</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="res_printer_server_tree"/>
+        </record>
+        <menuitem id="menu_admin_printing_server" name="Server" parent="menu_admin_printing" action="res_printer_server_action" sequence="1"/>
+
+        #
+        # Printers list
+        #
+        <record model="ir.ui.view" id="res_printer_tree">
+            <field name="name">printers.list.tree</field>
+            <field name="model">printers.list</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <tree string="Printer per server">
+                    <field name="code"/>
+                    <field name="name"/>
+                    <field name="server_id"/>
+                    <field name="type_id"/>
+                    <field name="active"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="res_printer_form">
+            <field name="name">printers.list.form</field>
+            <field name="model">printers.list</field>
+            <field name="type">form</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <form string="Printers per server">
+                    <field name="name" select="1"/>
+                    <field name="code" select="1"/>
+                    <field name="server_id" select="1"/>
+                    <field name="type_id" select="2"/>
+                    <field name="manufacturer_id" select="2"/>
+                    <field name="active" select="2"/>
+                    <notebook colspan="4">
+                        <page string="Options">
+                            <separator string="Specify parameter for this printer" colspan="4"/>
+                            <field name="fitplot"/>
+                        </page>
+                    </notebook>
+                </form>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="res_printer_action">
+            <field name="name">Printer per server</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">printers.list</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="res_printer_tree"/>
+        </record>
+        <menuitem id="menu_admin_printing_printer" name="Printers" parent="menu_admin_printing" action="res_printer_action"/>
+
+        #
+        # Printers type
+        #
+        <record model="ir.ui.view" id="res_printer_type_tree">
+            <field name="name">printers.type.tree</field>
+            <field name="model">printers.type</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <tree string="Printer Type">
+                    <field name="name"/>
+                    <field name="description"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="res_printer_type_form">
+            <field name="name">printers.type.form</field>
+            <field name="model">printers.type</field>
+            <field name="type">form</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <form string="Printer Type">
+                    <field name="name" select="1"/>
+                    <field name="description" select="2"/>
+                </form>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="res_printer_type_action">
+            <field name="name">Printer type</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">printers.type</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="res_printer_type_tree"/>
+        </record>
+        <menuitem id="menu_admin_printing_printer_type" name="Printer type" parent="menu_admin_printing" action="res_printer_type_action"/>
+
+        #
+        # Label type
+        #
+        <record model="ir.ui.view" id="res_printer_label_tree">
+            <field name="name">printers.label.tree</field>
+            <field name="model">printers.label</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <tree string="Label Type">
+                    <field name="name"/>
+                    <field name="width"/>
+                    <field name="height"/>
+                    <field name="type_id"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="res_printer_label_form">
+            <field name="name">printers.label.form</field>
+            <field name="model">printers.label</field>
+            <field name="type">form</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <form string="Label Type">
+                    <field name="name" select="1"/>
+                    <field name="type_id" select="2"/>
+                    <field name="width" select="1"/>
+                    <field name="height" select="1"/>
+                </form>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="res_printer_label_action">
+            <field name="name">Label type</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">printers.label</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="res_printer_label_tree"/>
+        </record>
+        <menuitem id="menu_admin_printing_label_type" name="Label type" parent="menu_admin_printing" action="res_printer_label_action"/>
+
+        #
+        # Printer Language
+        #
+        <record model="ir.ui.view" id="res_printer_language_tree">
+            <field name="name">printers.language.tree</field>
+            <field name="model">printers.language</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <tree string="Printer language">
+                    <field name="name"/>
+                    <field name="code"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="res_printer_language_form">
+            <field name="name">printers.language.form</field>
+            <field name="model">printers.language</field>
+            <field name="type">form</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <form string="Printer Language">
+                    <field name="name" select="1"/>
+                    <field name="code" select="1"/>
+                </form>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="res_printer_language_action">
+            <field name="name">Printer language</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">printers.language</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="res_printer_language_tree"/>
+        </record>
+        <menuitem id="menu_admin_printing_printer_language" name="Printer Language" parent="menu_admin_printing" action="res_printer_language_action"/>
+
+        #
+        # Manufacturer
+        #
+        <record model="ir.ui.view" id="res_printer_manufacturer_tree">
+            <field name="name">printers.manufacturer.tree</field>
+            <field name="model">printers.manufacturer</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <tree string="Manufacturer">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="website"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="res_printer_manufacturer_form">
+            <field name="name">printers.manufacturer.form</field>
+            <field name="model">printers.manufacturer</field>
+            <field name="type">form</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <form string="Manufacturer">
+                    <field name="name" select="1"/>
+                    <field name="code" select="1"/>
+                    <field name="website" widget="url"/>
+                </form>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="res_printer_manufacturer_action">
+            <field name="name">Manufacturer</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">printers.manufacturer</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="res_printer_manufacturer_tree"/>
+        </record>
+        <menuitem id="menu_admin_printing_manufacturer" name="Manufacturer" parent="menu_admin_printing" action="res_printer_manufacturer_action"/>
+
+    </data>
+</openerp>

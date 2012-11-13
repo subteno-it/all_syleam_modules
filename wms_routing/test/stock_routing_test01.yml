@@ -1,0 +1,7 @@
+-
+    1. Auto filling of the form
+-
+    # Call the "onchange_shipping_address" method for the sale order and check the returned value
+    !assert {model: sale.order, search: "[]", string: Automatic form filling}:
+        - onchange_shipping_address(False, False, False) == {}
+

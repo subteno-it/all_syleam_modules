@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        ##############################################################################
+        #
+        #    fetchmail_parsing module for OpenERP, Allows to map variable names inside email body to fields on related model
+        #    Copyright (C) 2011 SYLEAM Info Services ([http://www.Syleam.fr/]) 
+        #              Sylvain Garancher [sylvain.garancher@syleam.fr]
+        #
+        #    This file is a part of fetchmail_parsing
+        #
+        #    fetchmail_parsing is free software: you can redistribute it and/or modify
+        #    it under the terms of the GNU General Public License as published by
+        #    the Free Software Foundation, either version 3 of the License, or
+        #    (at your option) any later version.
+        #
+        #    fetchmail_parsing is distributed in the hope that it will be useful,
+        #    but WITHOUT ANY WARRANTY; without even the implied warranty of
+        #    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        #    GNU General Public License for more details.
+        #
+        #    You should have received a copy of the GNU General Public License
+        #    along with this program.  If not, see [http://www.gnu.org/licenses/].
+        #
+        ##############################################################################
+
+        <record id="view_email_server_form" model="ir.ui.view">
+            <field name="name">email.server.form</field>
+            <field name="model">email.server</field>
+            <field name="type">form</field>
+            <field name="priority" eval="24"/>
+            <field name="inherit_id" ref="fetchmail.view_email_server_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="/form/notebook" position="inside">
+                    <page string="Fields mapping">
+                        <field name="mapping_field_ids" nolabel="1">
+                            <tree string="Mapping field">
+                                <field name="field_id"/>
+                                <field name="pattern"/>
+                                <field name="message_part"/>
+                                <field name="sequence"/>
+                            </tree>
+                            <form string="Mapping field">
+                                <field name="field_id" select="1" domain="[('model_id', '=', parent.object_id)]"/>
+                                <field name="pattern" select="1"/>
+                                <field name="message_part" select="1"/>
+                                <field name="sequence" select="1"/>
+                            </form>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</openerp>

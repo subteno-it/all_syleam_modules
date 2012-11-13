@@ -1,0 +1,178 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+# 	* fetchmail_parsing
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 6.0.2\n"
+"Report-Msgid-Bugs-To: support@openerp.com\n"
+"POT-Creation-Date: 2011-09-23 15:54+0000\n"
+"PO-Revision-Date: 2011-09-23 17:55+0100\n"
+"Last-Translator: Sylvain Garancher <sylvain.garancher@syleam.fr>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+
+#. module: fetchmail_parsing
+#: constraint:email.server:0
+msgid ""
+"Warning! Record for selected Model can not be created\n"
+"Please choose valid Model"
+msgstr ""
+"Attention ! Fetchmail ne peut créer d'enregistrement pour le modèle sélectionné\n"
+"Merci de sélectionner un modèle valide"
+
+#. module: fetchmail_parsing
+#: selection:email.server.mapping.field,message_part:0
+msgid "From"
+msgstr "Expéditeur"
+
+#. module: fetchmail_parsing
+#: field:email.server.mapping.field,pattern:0
+msgid "Pattern"
+msgstr "Motif"
+
+#. module: fetchmail_parsing
+#: help:email.server.mapping.field,email_server_id:0
+msgid "Email server configuration"
+msgstr "Configuration du serveur de mail"
+
+#. module: fetchmail_parsing
+#: field:email.server.mapping.field,field_id:0
+msgid "Field"
+msgstr "Champ"
+
+#. module: fetchmail_parsing
+#: model:ir.model,name:fetchmail_parsing.model_email_server_tools
+msgid "Email Server Tools"
+msgstr "Outils pour le serveur de courriel"
+
+#. module: fetchmail_parsing
+#: selection:email.server.mapping.field,message_part:0
+msgid "Reply to"
+msgstr "Adresse de réponse"
+
+#. module: fetchmail_parsing
+#: selection:email.server.mapping.field,message_part:0
+msgid "Body"
+msgstr "Corps"
+
+#. module: fetchmail_parsing
+#: field:email.server,mapping_field_ids:0
+msgid "Mapping fields"
+msgstr "Champs reconnus"
+
+#. module: fetchmail_parsing
+#: help:email.server.mapping.field,pattern:0
+msgid ""
+"Pattern which will be sarched for to find the field's value.\n"
+"Put (.*?) for the variable part.\n"
+"Example : [[phone:(.*?)]].\n"
+"In case of full content, put only (.*), without the question mark."
+msgstr ""
+"Motif qui sera recherché pour trouver la valeur du champ.\n"
+"Mettez (.*?) pour la partie variable.\n"
+"Exemple : [[phone:(.*?)]]\n"
+"Dans le cas du contenu complet d'une partie de message, mettez uniquement (.*), sans le point d'interrogation."
+
+#. module: fetchmail_parsing
+#: model:ir.model,name:fetchmail_parsing.model_email_server
+msgid "POP/IMAP Server"
+msgstr "Serveur POP/IMAP"
+
+#. module: fetchmail_parsing
+#: selection:email.server.mapping.field,message_part:0
+msgid "Date"
+msgstr "Date"
+
+#. module: fetchmail_parsing
+#: field:email.server.mapping.field,email_server_id:0
+msgid "Email server"
+msgstr "Configuration de serveur"
+
+#. module: fetchmail_parsing
+#: field:email.server.mapping.field,message_part:0
+msgid "Message Part"
+msgstr "Partie du message"
+
+#. module: fetchmail_parsing
+#: view:email.server:0
+msgid "Mapping field"
+msgstr "Champ reconnu"
+
+#. module: fetchmail_parsing
+#: selection:email.server.mapping.field,message_part:0
+msgid "CC"
+msgstr "Copie"
+
+#. module: fetchmail_parsing
+#: selection:email.server.mapping.field,message_part:0
+msgid "To"
+msgstr "Destinataire"
+
+#. module: fetchmail_parsing
+#: selection:email.server.mapping.field,message_part:0
+msgid "In reply to"
+msgstr "En réponse à"
+
+#. module: fetchmail_parsing
+#: view:email.server:0
+msgid "Fields mapping"
+msgstr "Champs reconnus"
+
+#. module: fetchmail_parsing
+#: constraint:email.server:0
+msgid "Warning! Can't have duplicate server configuration!"
+msgstr "Avertissement! vous ne pouvez pas dupliquer une configuration de serveur!"
+
+#. module: fetchmail_parsing
+#: field:email.server.mapping.field,sequence:0
+msgid "Sequence"
+msgstr "Séquence"
+
+#. module: fetchmail_parsing
+#: model:ir.model,name:fetchmail_parsing.model_email_server_mapping_field
+msgid "Variable to field mapping"
+msgstr "Variable du champ reconnu"
+
+#. module: fetchmail_parsing
+#: help:email.server,mapping_field_ids:0
+msgid "Allow to map fields with custom variables in email body"
+msgstr "Permet de remplir certains champs avec des valeurs personnalisés dans le corps du message"
+
+#. module: fetchmail_parsing
+#: help:email.server.mapping.field,field_id:0
+msgid "The model's field on which the variable value will be written, if found"
+msgstr "Le champ du modèle dans lequel la valeur sera écrite, si elle est trouvée"
+
+#. module: fetchmail_parsing
+#: selection:email.server.mapping.field,message_part:0
+msgid "References"
+msgstr "Référence"
+
+#. module: fetchmail_parsing
+#: help:email.server.mapping.field,sequence:0
+msgid "Will concatenate fields contents ordered by sequence"
+msgstr "Les champs seront concaténés dans l'ordre de la séquence"
+
+#. module: fetchmail_parsing
+#: help:email.server.mapping.field,message_part:0
+msgid "This field defines the part of the email where the data will be searched for"
+msgstr "Ce champ détermine la partie du message dans laquelle les données seront recherchées"
+
+#. module: fetchmail_parsing
+#: selection:email.server.mapping.field,message_part:0
+msgid "Subject"
+msgstr "Sujet"
+
+#~ msgid "Allows to map contents from email to fields on related model"
+#~ msgstr ""
+#~ "Permet de faire correspondre des parties d'email à des champs dans un "
+#~ "objet OpenERP"
+#~ msgid "Fetchmail Parsing"
+#~ msgstr "Fetchmail Parsing"
+#~ msgid "Email part"
+#~ msgstr "Partie du message"
+

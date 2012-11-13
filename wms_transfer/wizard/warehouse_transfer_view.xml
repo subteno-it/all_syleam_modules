@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        ##############################################################################
+        #
+        #    wms_transfer module for OpenERP, Wizard for transfer product in stock in other warehouse
+        #    Copyright (C) 2012 SYLEAM Info Services ([http://www.syleam.fr/]) 
+        #              Sebastien LANGE [sebastien.lange@syleam.fr]
+        #
+        #    This file is a part of wms_transfer
+        #
+        #    wms_transfer is free software: you can redistribute it and/or modify
+        #    it under the terms of the GNU Affero General Public License as published by
+        #    the Free Software Foundation, either version 3 of the License, or
+        #    (at your option) any later version.
+        #
+        #    wms_transfer is distributed in the hope that it will be useful,
+        #    but WITHOUT ANY WARRANTY; without even the implied warranty of
+        #    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        #    GNU Affero General Public License for more details.
+        #
+        #    You should have received a copy of the GNU Affero General Public License
+        #    along with this program.  If not, see [http://www.gnu.org/licenses/].
+        #
+        ##############################################################################
+
+        <record id="view_stock_warehouse_transfer_form" model="ir.ui.view">
+            <field name="name">wizard.stock.warehouse.transfer.form</field>
+            <field name="model">wizard.stock.warehouse.transfer</field>
+            <field name="type">form</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <form string="Warehouse Transfer">
+                    <separator string="Product Informations" colspan="4"/>
+                    <field name="product_id" colspan="4"/>
+                    <field name="prodlot_id"/>
+                    <field name="tracking_id"/>
+                    <separator string="Warehouses" colspan="4"/>
+                    <field name="warehouse_src_id" widget="selection"/>
+                    <field name="warehouse_dest_id" widget="selection"/>
+                    <separator string="Locations" colspan="4"/>
+                    <field name="location_src_id"/>
+                    <field name="location_dest_id" domain="[('warehouse_id','=', warehouse_dest_id), ('usage', '=', 'transit')]"/>
+                    <separator string="Quantities" colspan="4"/>
+                    <field name="product_uom_qty"/>
+                    <field name="uom_id"/>
+                    <separator string="Others" colspan="4"/>
+                    <field name="product_packaging_id" domain="[('product_id','=', product_id)]"/>
+                    <field name="date_expected"/>
+                    <field name="last_transfer"/>
+                    <group colspan="4" col="6">
+                        <button icon="gtk-cancel" special="cancel" string="Cancel"/>
+                        <button icon="gtk-ok" string="Validate" name="validate" type="object"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_stock_warehouse_transfer_view">
+            <field name="name">Warehouse transfer</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">wizard.stock.warehouse.transfer</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="target">new</field>
+        </record>
+    </data>
+</openerp>
