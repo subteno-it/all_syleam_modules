@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        ##############################################################################
+        #
+        #    wms_crossdock module for OpenERP, Extension of WMS : Crossdocking management
+        #    Copyright (C) 2012 SYLEAM Info Services ([http://www.syleam.fr/]) 
+        #              Sylvain Garancher [sylvain.garancher@syleam.fr]
+        #              Sebastien LANGE [sebastien.lange@syleam.fr]
+        #
+        #    This file is a part of wms_crossdock
+        #
+        #    wms_crossdock is free software: you can redistribute it and/or modify
+        #    it under the terms of the GNU Affero General Public License as published by
+        #    the Free Software Foundation, either version 3 of the License, or
+        #    (at your option) any later version.
+        #
+        #    wms_crossdock is distributed in the hope that it will be useful,
+        #    but WITHOUT ANY WARRANTY; without even the implied warranty of
+        #    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        #    GNU Affero General Public License for more details.
+        #
+        #    You should have received a copy of the GNU Affero General Public License
+        #    along with this program.  If not, see [http://www.gnu.org/licenses/].
+        #
+        ##############################################################################
+
+
+        <record id="stock_location_cat_crossdock" model="stock.location.category">
+            <field name="name">Crossdock</field>
+            <field name="code">crossdock</field>
+            <field name="active" eval="True"/>
+        </record>
+
+        <record id="stock_location_crossdock" model="stock.location">
+            <field name="name">Crossdock</field>
+            <field name="usage">internal</field>
+            <field name="categ_id" ref="stock_location_cat_crossdock"/>
+            <field name="location_id" ref="stock.stock_location_stock"/>
+            <field name="chained_location_type">none</field>
+            <field name="chained_auto_packing">manual</field>
+        </record>
+
+        <record id="ir_property_default_location_type" model="ir.property">
+            <field name="name">location_type</field>
+            <field name="fields_id" search="[('model', '=', 'product.product'),('name', '=', 'location_type')]"/>
+            <field name="type">selection</field>
+            <field name="value">compute</field>
+        </record>
+
+
+    </data>
+</openerp>

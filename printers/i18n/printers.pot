@@ -1,0 +1,502 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* printers
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 6.0.2\n"
+"Report-Msgid-Bugs-To: support@openerp.com\n"
+"POT-Creation-Date: 2011-10-12 14:21+0000\n"
+"PO-Revision-Date: 2011-10-12 14:21+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: printers
+#: model:ir.actions.act_window,name:printers.act_open_server_action_redef_printing_view
+#: model:ir.ui.menu,name:printers.menu_server_action_redef_printing
+msgid "Printing Server Action"
+msgstr ""
+
+#. module: printers
+#: field:printers.list,code:0
+msgid "Printer Code"
+msgstr ""
+
+#. module: printers
+#: help:printers.server,printer_ids:0
+msgid "List of printers available on this server"
+msgstr ""
+
+#. module: printers
+#: field:printers.label,width:0
+msgid "Width"
+msgstr ""
+
+#. module: printers
+#: field:printers.list,fitplot:0
+msgid "Fitplot"
+msgstr ""
+
+#. module: printers
+#: model:ir.actions.act_window,name:printers.res_printer_language_action
+#: model:ir.model,name:printers.model_printers_language
+#: view:printers.language:0
+msgid "Printer language"
+msgstr ""
+
+#. module: printers
+#: help:printers.list,code:0
+msgid "Printer's code"
+msgstr ""
+
+#. module: printers
+#: field:printers.server,printer_ids:0
+msgid "Printers List"
+msgstr ""
+
+#. module: printers
+#: field:ir.actions.server,model_name:0
+msgid "Model Name"
+msgstr ""
+
+#. module: printers
+#: model:ir.model,name:printers.model_printers_server
+msgid "List of printing servers"
+msgstr ""
+
+#. module: printers
+#: model:ir.actions.act_window,name:printers.res_printer_action
+#: view:printers.list:0
+msgid "Printer per server"
+msgstr ""
+
+#. module: printers
+#: help:printers.type,name:0
+msgid "Name of this type"
+msgstr ""
+
+#. module: printers
+#: help:ir.actions.server,printing_report_id:0
+msgid "The report which will be printed"
+msgstr ""
+
+#. module: printers
+#: view:printers.label:0
+msgid "Label Type"
+msgstr ""
+
+#. module: printers
+#: view:printers.list:0
+msgid "Specify parameter for this printer"
+msgstr ""
+
+#. module: printers
+#: help:printers.server,user:0
+msgid "User to log in on the server"
+msgstr ""
+
+#. module: printers
+#: help:printers.manufacturer,code:0
+msgid "Code of this manufacturer"
+msgstr ""
+
+#. module: printers
+#: help:printers.manufacturer,name:0
+msgid "Name of this manufacturer"
+msgstr ""
+
+#. module: printers
+#: model:ir.actions.act_window,name:printers.res_printer_type_action
+#: model:ir.ui.menu,name:printers.menu_admin_printing_printer_type
+#: help:printers.list,type_id:0
+msgid "Printer type"
+msgstr ""
+
+#. module: printers
+#: help:printers.server,address:0
+msgid "IP address or hostname of the server"
+msgstr ""
+
+#. module: printers
+#: sql_constraint:res.users:0
+msgid "You can not have two users with the same login !"
+msgstr ""
+
+#. module: printers
+#: model:ir.model,name:printers.model_printers_label
+msgid "Label board"
+msgstr ""
+
+#. module: printers
+#: help:printers.language,code:0
+msgid "Code of the language"
+msgstr ""
+
+#. module: printers
+#: model:printers.language,name:printers.language_ps
+msgid "PostScript"
+msgstr ""
+
+#. module: printers
+#: model:printers.language,name:printers.language_pcli
+msgid "PCL"
+msgstr ""
+
+#. module: printers
+#: model:ir.ui.menu,name:printers.menu_admin_printing_printer
+msgid "Printers"
+msgstr ""
+
+#. module: printers
+#: field:printers.list,type_id:0
+msgid "Type"
+msgstr ""
+
+#. module: printers
+#: help:ir.actions.server,printing_source:0
+msgid "Add condition to found the id of the printer, use:\n"
+"- c for context\n"
+"- o for object\n"
+"- time for date and hour\n"
+"- u for user\n"
+" eg: o.warehouse_id.printer_id.name"
+msgstr ""
+
+#. module: printers
+#: help:ir.actions.server,model_name:0
+msgid "Name of the model, used to filter ir.actions.report.xml"
+msgstr ""
+
+#. module: printers
+#: help:printers.manufacturer,website:0
+msgid "Website address of this manufacturer"
+msgstr ""
+
+#. module: printers
+#: help:printers.label,width:0
+msgid "Width of the label, in millimeters"
+msgstr ""
+
+#. module: printers
+#: field:ir.actions.server,printing_report_id:0
+msgid "Report"
+msgstr ""
+
+#. module: printers
+#: field:printers.list,name:0
+msgid "Printer Name"
+msgstr ""
+
+#. module: printers
+#: help:printers.language,name:0
+msgid "Name of the language"
+msgstr ""
+
+#. module: printers
+#: help:res.users,context_printer_id:0
+msgid "Printer used by default for this user"
+msgstr ""
+
+#. module: printers
+#: code:addons/printers/printers.py:118
+#, python-format
+msgid "Missing ids to print report"
+msgstr ""
+
+#. module: printers
+#: help:printers.list,manufacturer_id:0
+msgid "Printer's manufacturer"
+msgstr ""
+
+#. module: printers
+#: help:printers.list,active:0
+msgid "If checked, this link  printer/server is active"
+msgstr ""
+
+#. module: printers
+#: model:ir.ui.menu,name:printers.menu_admin_printing_printer_language
+#: view:printers.language:0
+msgid "Printer Language"
+msgstr ""
+
+#. module: printers
+#: model:printers.language,name:printers.language_epl1
+msgid "EPL 1 (line mode)"
+msgstr ""
+
+#. module: printers
+#: model:ir.ui.menu,name:printers.menu_admin_printing_server
+#: field:printers.list,server_id:0
+#: view:printers.server:0
+#: field:printers.server,server:0
+msgid "Server"
+msgstr ""
+
+#. module: printers
+#: view:printers.list:0
+msgid "Options"
+msgstr ""
+
+#. module: printers
+#: model:ir.model,name:printers.model_printers_list
+msgid "List of printers per server"
+msgstr ""
+
+#. module: printers
+#: model:printers.type,name:printers.type_matrix
+msgid "Matrix"
+msgstr ""
+
+#. module: printers
+#: field:printers.label,type_id:0
+#: view:printers.type:0
+msgid "Printer Type"
+msgstr ""
+
+#. module: printers
+#: model:ir.model,name:printers.model_printers_type
+msgid "List of printers types"
+msgstr ""
+
+#. module: printers
+#: model:ir.model,name:printers.model_ir_actions_server
+msgid "ir.actions.server"
+msgstr ""
+
+#. module: printers
+#: help:printers.server,password:0
+msgid "Password to log in on the server"
+msgstr ""
+
+#. module: printers
+#: help:printers.list,server_id:0
+msgid "Printer server"
+msgstr ""
+
+#. module: printers
+#: constraint:res.users:0
+msgid "The chosen company is not in the allowed companies for this user"
+msgstr ""
+
+#. module: printers
+#: help:printers.label,height:0
+msgid "Height of the label, in millimeters"
+msgstr ""
+
+#. module: printers
+#: help:printers.list,name:0
+msgid "Printer's name"
+msgstr ""
+
+#. module: printers
+#: model:ir.actions.act_window,name:printers.res_printer_server_action
+msgid "Printing Server"
+msgstr ""
+
+#. module: printers
+#: model:printers.language,name:printers.language_escpos
+msgid "Escape Point of Sale"
+msgstr ""
+
+#. module: printers
+#: field:printers.server,user:0
+msgid "User"
+msgstr ""
+
+#. module: printers
+#: field:printers.list,active:0
+#: field:printers.server,active:0
+msgid "Active"
+msgstr ""
+
+#. module: printers
+#: help:ir.actions.server,printing_function:0
+msgid "Name of the function to launch for printing.\n"
+"DEPRECATED"
+msgstr ""
+
+#. module: printers
+#: help:printers.server,port:0
+msgid "Port of the server"
+msgstr ""
+
+#. module: printers
+#: model:ir.actions.act_window,name:printers.res_printer_manufacturer_action
+#: model:ir.ui.menu,name:printers.menu_admin_printing_manufacturer
+#: field:printers.list,manufacturer_id:0
+#: view:printers.manufacturer:0
+msgid "Manufacturer"
+msgstr ""
+
+#. module: printers
+#: model:printers.language,name:printers.language_escp2
+msgid "Escape Sequence"
+msgstr ""
+
+#. module: printers
+#: help:printers.server,server:0
+msgid "Name of the server"
+msgstr ""
+
+#. module: printers
+#: help:printers.label,type_id:0
+msgid "Type of printer"
+msgstr ""
+
+#. module: printers
+#: code:addons/printers/printers.py:118
+#: code:addons/printers/server_action.py:114
+#: code:addons/printers/server_action.py:118
+#: code:addons/printers/server_action.py:138
+#, python-format
+msgid "Error"
+msgstr ""
+
+#. module: printers
+#: field:printers.language,code:0
+#: field:printers.manufacturer,code:0
+msgid "Code"
+msgstr ""
+
+#. module: printers
+#: field:ir.actions.server,printing_source:0
+msgid "Source"
+msgstr ""
+
+#. module: printers
+#: view:ir.actions.server:0
+msgid "Print SA"
+msgstr ""
+
+#. module: printers
+#: field:printers.label,height:0
+msgid "Height"
+msgstr ""
+
+#. module: printers
+#: help:printers.label,name:0
+msgid "Name of the label"
+msgstr ""
+
+#. module: printers
+#: model:ir.model,name:printers.model_res_users
+msgid "res.users"
+msgstr ""
+
+#. module: printers
+#: model:printers.language,name:printers.language_epl2
+msgid "EPL 2"
+msgstr ""
+
+#. module: printers
+#: code:addons/printers/server_action.py:138
+#, python-format
+msgid "Report to print not found !"
+msgstr ""
+
+#. module: printers
+#: view:printers.list:0
+msgid "Printers per server"
+msgstr ""
+
+#. module: printers
+#: model:printers.type,name:printers.type_laser
+msgid "Laser"
+msgstr ""
+
+#. module: printers
+#: field:ir.actions.server,printing_function:0
+msgid "Function"
+msgstr ""
+
+#. module: printers
+#: help:printers.list,fitplot:0
+msgid "If checked, scales the print file to fit on the page"
+msgstr ""
+
+#. module: printers
+#: field:printers.type,description:0
+msgid "Description"
+msgstr ""
+
+#. module: printers
+#: field:res.users,context_printer_id:0
+msgid "Default printer"
+msgstr ""
+
+#. module: printers
+#: code:addons/printers/server_action.py:114
+#: code:addons/printers/server_action.py:118
+#, python-format
+msgid "Printer not found !"
+msgstr ""
+
+#. module: printers
+#: model:ir.actions.act_window,name:printers.res_printer_label_action
+#: model:ir.ui.menu,name:printers.menu_admin_printing_label_type
+msgid "Label type"
+msgstr ""
+
+#. module: printers
+#: field:printers.server,address:0
+msgid "Address"
+msgstr ""
+
+#. module: printers
+#: field:printers.server,password:0
+msgid "Password"
+msgstr ""
+
+#. module: printers
+#: model:ir.model,name:printers.model_printers_manufacturer
+msgid "Printer manufacturer"
+msgstr ""
+
+#. module: printers
+#: field:printers.label,name:0
+#: field:printers.language,name:0
+#: field:printers.manufacturer,name:0
+#: field:printers.type,name:0
+msgid "Name"
+msgstr ""
+
+#. module: printers
+#: view:ir.actions.server:0
+msgid "Use Administration->Printing->Printing Server Action instead of this form"
+msgstr ""
+
+#. module: printers
+#: help:printers.server,active:0
+msgid "If checked, this server is useable"
+msgstr ""
+
+#. module: printers
+#: view:ir.actions.server:0
+#: model:ir.ui.menu,name:printers.menu_admin_printing
+msgid "Printing"
+msgstr ""
+
+#. module: printers
+#: field:printers.manufacturer,website:0
+msgid "Website"
+msgstr ""
+
+#. module: printers
+#: help:printers.type,description:0
+msgid "Description for this type"
+msgstr ""
+
+#. module: printers
+#: model:printers.type,name:printers.type_thermal
+msgid "Thermal"
+msgstr ""
+
+#. module: printers
+#: field:printers.server,port:0
+msgid "Port"
+msgstr ""
+

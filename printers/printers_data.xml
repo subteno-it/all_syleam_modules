@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data noupdate="1">
+        ##############################################################################
+        #
+        #    printers module for OpenERP, Allow to manage printers un OpenERP
+        #    Copyright (C) 2011 SYLEAM Info Services ([http://www.Syleam.fr/])
+        #              Sylvain Garancher [sylvain.garancher@syleam.fr]
+        #              Christophe CHAUVET [christophe.chauvet@syleam.fr]
+        #
+        #    This file is a part of printers
+        #
+        #    printers is free software: you can redistribute it and/or modify
+        #    it under the terms of the GNU Affero General Public License as published by
+        #    the Free Software Foundation, either version 3 of the License, or
+        #    (at your option) any later version.
+        #
+        #    printers is distributed in the hope that it will be useful,
+        #    but WITHOUT ANY WARRANTY; without even the implied warranty of
+        #    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        #    GNU Affero General Public License for more details.
+        #
+        #    You should have received a copy of the GNU Affero General Public License
+        #    along with this program.  If not, see [http://www.gnu.org/licenses/].
+        #
+        ##############################################################################
+
+        #
+        # Types
+        #
+        <record model="printers.type" id="type_laser">
+            <field name="name">Laser</field>
+            <field name="description">Laser printer</field>
+        </record>
+        <record model="printers.type" id="type_matrix">
+            <field name="name">Matrix</field>
+            <field name="description">Matrix printer</field>
+        </record>
+        <record model="printers.type" id="type_thermal">
+            <field name="name">Thermal</field>
+            <field name="description">Thermal printer</field>
+        </record>
+        <record model="printers.label" id="label_32x25">
+            <field name="name">Label 32x25 thermal direct</field>
+            <field name="type_id" ref="type_thermal"/>
+            <field name="width">32</field>
+            <field name="height">25</field>
+        </record>
+        <record model="printers.label" id="label_a3">
+            <field name="name">A3</field>
+            <field name="type_id" ref="type_laser"/>
+            <field name="width">297</field>
+            <field name="height">420</field>
+        </record>
+        <record model="printers.label" id="label_a4">
+            <field name="name">A4</field>
+            <field name="type_id" ref="type_laser"/>
+            <field name="width">210</field>
+            <field name="height">297</field>
+        </record>
+        <record model="printers.label" id="label_a5">
+            <field name="name">A5</field>
+            <field name="type_id" ref="type_laser"/>
+            <field name="width">148</field>
+            <field name="height">210</field>
+        </record>
+
+        #
+        # Printer Languages
+        #
+        <record model="printers.language" id="language_pcli">
+            <field name="name">PCL</field>
+            <field name="code">PCL</field>
+        </record>
+        <record model="printers.language" id="language_ps">
+            <field name="name">PostScript</field>
+            <field name="code">PS</field>
+        </record>
+        <record model="printers.language" id="language_epl1">
+            <field name="name">EPL 1 (line mode)</field>
+            <field name="code">EPL1</field>
+        </record>
+        <record model="printers.language" id="language_epl2">
+            <field name="name">EPL 2</field>
+            <field name="code">EPL2</field>
+        </record>
+        <record model="printers.language" id="language_escp2">
+            <field name="name">Escape Sequence</field>
+            <field name="code">ESCP</field>
+        </record>
+        <record model="printers.language" id="language_escpos">
+            <field name="name">Escape Point of Sale</field>
+            <field name="code">ESCPOS</field>
+        </record>
+
+        #
+        # Manufacturers
+        #
+        <record model="printers.manufacturer" id="manufac_zebra">
+            <field name="name">Zebra</field>
+            <field name="code">zebra</field>
+            <field name="website">http://www.zebra.com</field>
+        </record>
+        <record model="printers.manufacturer" id="manufac_hp">
+            <field name="name">Hewlett Packard</field>
+            <field name="code">hp</field>
+            <field name="website">http://www.hp.com</field>
+        </record>
+        <record model="printers.manufacturer" id="manufac_oki">
+            <field name="name">OKI</field>
+            <field name="code">oki</field>
+            <field name="website">http://www.oki.com</field>
+        </record>
+        <record model="printers.manufacturer" id="manufac_epson">
+            <field name="name">EPSON</field>
+            <field name="code">epson</field>
+            <field name="website">http://www.epson.com</field>
+        </record>
+        <record model="printers.manufacturer" id="manufac_lexmark">
+            <field name="name">Lexmark</field>
+            <field name="code">lex</field>
+            <field name="website">http://www.lexmark.com</field>
+        </record>
+        <record model="printers.manufacturer" id="manufac_ibm">
+            <field name="name">IBM</field>
+            <field name="code">ibm</field>
+            <field name="website">http://www.ibm.com</field>
+        </record>
+        <record model="printers.manufacturer" id="manufac_kyocera">
+            <field name="name">Kyocera</field>
+            <field name="code">kyo</field>
+            <field name="website">http://www.kyocera.fr</field>
+        </record>
+    </data>
+</openerp>

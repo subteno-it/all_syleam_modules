@@ -1,0 +1,13 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"access_printers_server_user","printers.server User","printers.model_printers_server","base.group_user",1,0,0,0
+"access_printers_user","res.printer User","printers.model_printers_list","base.group_user",1,0,0,0
+"access_printers_type_user","res.printer.type User","printers.model_printers_type","base.group_user",1,0,0,0
+"access_printers_label_user","res.printer.label User","printers.model_printers_label","base.group_user",1,0,0,0
+"access_printers_language_user","res.printer.language User","printers.model_printers_language","base.group_user",1,0,0,0
+"access_printers_manufacturer_user","res.printer.manufacturer User","printers.model_printers_manufacturer","base.group_user",1,0,0,0
+"access_printers_server_manager","res.printer.server Manager","printers.model_printers_server","base.group_erp_manager",1,1,1,1
+"access_printers_manager","res.printer Manager","printers.model_printers_list","base.group_erp_manager",1,1,1,1
+"access_printers_type_manager","res.printer.type Manager","printers.model_printers_type","base.group_erp_manager",1,1,1,1
+"access_printers_label_manager","res.printer.label Manager","printers.model_printers_label","base.group_erp_manager",1,1,1,1
+"access_printers_language_manager","res.printer.language Manager","printers.model_printers_language","base.group_erp_manager",1,1,1,1
+"access_printers_manufacturer_manager","res.printer.manufacturer Manager","printers.model_printers_manufacturer","base.group_erp_manager",1,1,1,1

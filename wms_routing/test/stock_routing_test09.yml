@@ -1,0 +1,15 @@
+-
+    9. Auto filling of the form
+-
+    # Create the first stock round
+    !record {model: stock.round, id: wms_routing_stock_round_test9}:
+        name: Stock routing Test 9
+-
+    # Create the partner address
+    !record {model: res.partner.address, id: wms_routing_res_partner_address_test9}:
+        name: Stock routing Test 9
+-
+    # Call the "onchange_shipping_address" method for the sale order and check the returned value
+    !assert {model: sale.order, search: "[]", string: Automatic form filling}:
+        - onchange_shipping_address(False, ref('wms_routing_res_partner_address_test9'), ref('wms_routing_stock_round_test9')) == {}
+

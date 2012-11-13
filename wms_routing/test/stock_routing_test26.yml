@@ -1,0 +1,48 @@
+-
+    26. Create and modify stock moves
+-
+    # Create the stock location
+    !record {model: stock.location, id: wms_routing_stock_location_test26}:
+        name: Stock routing Test 26
+-
+    # Create the first stock picking
+    !record {model: stock.picking, id: wms_routing_stock_picking_test26_picking1}:
+        name: 'Stock routing Test 26 - Picking 1'
+        type: out
+        partner_id: base.main_partner
+        address_id: base.main_address
+-
+    # Create the first stock move
+    !record {model: stock.move, id: wms_routing_stock_move_test26_move1}:
+        name: 'Stock routing Test 26 - Move 1'
+        picking_id: wms_routing_stock_picking_test26_picking1
+        product_id: product.product_product_cpu1
+        product_uom: product.product_uom_unit
+        product_qty: 5
+        location_id: wms_routing_stock_location_test26
+        location_dest_id: stock.stock_location_output
+-
+    # Create the second stock picking
+    !record {model: stock.picking, id: wms_routing_stock_picking_test26_picking2}:
+        name: 'Stock routing Test 26 - Picking 2'
+        type: out
+        partner_id: base.main_partner
+        address_id: base.main_address
+        move_lines:
+            -
+                name: Stock routing Test 26
+                product_id: product.product_product_cpu1
+                product_uom: product.product_uom_unit
+                product_qty: 5
+                location_id: stock.stock_location_stock
+                location_dest_id: wms_routing_stock_location_test26
+                move_dest_id: wms_routing_stock_move_test26_move1
+-
+    # Assert the location_id on the first move
+    !assert {model: stock.move, id: wms_routing_stock_move_test26_move1, string: 'Location on the moves'}:
+        - location_id.id == ref('wms_routing_stock_location_test26')
+-
+    # Assert the location_dest_id on the second picking moves
+    !assert {model: stock.move, search: "[('picking_id', '=', ref(\"wms_routing_stock_picking_test26_picking2\"))]", string: 'Location on the moves'}:
+        - location_dest_id.id == ref('wms_routing_stock_location_test26')
+

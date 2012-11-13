@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- ************************************************************ -->
+        <!-- ** Enum the different type of format *********************** -->
+        <!-- ************************************************************ -->
+        <record id="view_document_import_format_tree" model="ir.ui.view">
+            <field name="name">document.import.format - tree</field>
+            <field name="model">document.import.format</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+
+                <tree string="Format list">
+                    <field name="name"/>
+                    <field name="type"/>
+                </tree>
+
+            </field>
+        </record>
+
+        <record id="view_document_import_format_form" model="ir.ui.view">
+            <field name="name">document.import.format - tree</field>
+            <field name="model">document.import.format</field>
+            <field name="type">form</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+
+                <form string="Import list">
+                    <field name="name" select="1"/>
+                    <field name="type" select="1"/>
+                </form>
+
+            </field>
+        </record>
+
+        <record id="action_document_import_format" model="ir.actions.act_window">
+            <field name="name">Import format</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">document.import.format</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'import': True}</field>
+            <field name="domain">[]</field>
+        </record>
+
+        <record id="action_document_import_format_view_tree" model="ir.actions.act_window.view">
+            <field name="sequence" eval="10"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_document_import_format_tree"/>
+            <field name="act_window_id" ref="action_document_import_format"/>
+        </record>
+
+        <record id="action_document_import_format_view_form" model="ir.actions.act_window.view">
+            <field name="sequence" eval="20"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_document_import_format_form"/>
+            <field name="act_window_id" ref="action_document_import_format"/>
+        </record>
+
+        <menuitem action="action_document_import_format" id="menu_document_import_format"
+            parent="menu_document_import_configuration" sequence="15"/>
+
+        <!-- ************************************************************ -->
+        <!-- ** Description list of import file ************************* -->
+        <!-- ************************************************************ -->
+        <record id="view_document_import_list_line_tree" model="ir.ui.view">
+            <field name="name">document.import.list.line - tree</field>
+            <field name="model">document.import.list.line</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+
+                <tree string="Import list">
+                    <field name="name"/>
+                    <field name="field_id"/>
+                    <field name="relation"/>
+                    <field name="refkey"/>
+                </tree>
+
+            </field>
+        </record>
+
+        <record id="view_document_import_list_tree" model="ir.ui.view">
+            <field name="name">document.import.list - tree</field>
+            <field name="model">document.import.list</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+
+                <tree string="Import list" colors="#f66a00:disable==True">
+                    <field name="name"/>
+                    <field name="model_id"/>
+                    <field name="ctx"/>
+                    <field name="log_dir_id"/>
+                    <field name="backup_dir_id"/>
+                    <field name="reject_dir_id"/>
+                    <field name="disable"/>
+                </tree>
+
+            </field>
+        </record>
+
+        <record id="view_document_import_list_form" model="ir.ui.view">
+            <field name="name">document.import.list - form</field>
+            <field name="model">document.import.list</field>
+            <field name="type">form</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+
+                <form string="Import list">
+                    <group col="6" colspan="4">
+                        <separator string="General" colspan="6"/>
+                        <field name="name" select="1"/>
+                        <field name="model_id" select="1"/>
+                        <field name="disable" select="2"/>
+                        <field name="ctx" on_change="onchange_context(ctx)" colspan="6"/>
+                    </group>
+                    <notebook colspan="4">
+                        <page string="General">
+                            <group colspan="4" col="8">
+                                <group colspan="2" col="2">
+                                    <separator string="Actions" colspan="2"/>
+                                    <button string="Read CSV Header" type="action" name="%(document_csv.action_wizard_read_csv_file_view)d" colspan="2"/>
+                                    <button string="Generate structure from model" type="object" name="generate_structure_from_model" colspan="2"/>
+                                    <button string="Export structure" type="action" name="%(document_csv.action_document_import_csv_export_yaml)d" colspan="2"/>
+                                    <separator string="Import file information" colspan="2"/>
+                                    <field name="csv_sep"/>
+                                    <field name="csv_esc"/>
+                                    <field name="encoding"/>
+                                    <field name="key_field_name"/>
+                                    <separator string="Format" colspan="2"/>
+                                    <field name="lang_id" widget="selection"/>
+                                    <field name="format_date" widget="selection"/>
+                                    <field name="format_time" widget="selection"/>
+                                    <field name="format_datetime" widget="selection"/>
+                                </group>
+                                <group colspan="6">
+                                    <field name="line_ids" colspan="4" nolabel="1" height="400">
+                                        <tree string="Columns" editable="bottom">
+                                            <field name="name"/>
+                                            <field name="field_id" domain="[('model_id','=', parent.model_id)]"
+                                                context="{'import': True}" required="1"
+                                                on_change="onchange_model_field(field_id)"/>
+                                            <field name="model_relation_id" attrs="{'readonly': [('field_id.ttype','not in', ('many2one','one2many','many2many'))]}"/>
+                                            <field name="field_relation_id" attrs="{'readonly': [('model_relation_id','=', False)]}"/>
+                                            <field name="relation"/>
+                                            <field name="refkey"/>
+                                        </tree>
+                                        <form string="Columns">
+                                            <group colspan="4">
+                                                <group colspan="2" col="2">
+                                                    <field name="name"/>
+                                                    <field name="refkey"/>
+                                                </group>
+                                                <group colspan="2" col="2">
+                                                    <field name="field_id" domain="[('model_id','=', parent.model_id)]"
+                                                        context="{'import': True}" required="1"
+                                                        on_change="onchange_model_field(field_id)"/>
+                                                    <field name="model_relation_id" attrs="{'readonly': [('field_id.ttype','not in', ('many2one','one2many','many2many'))]}"/>
+                                                    <field name="field_relation_id" attrs="{'readonly': [('model_relation_id','=', False)]}"/>
+                                                    <field name="relation"/>
+                                                </group>
+                                            </group>
+                                        </form>
+                                    </field>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Logging">
+                            <group colspan="4" col="12">
+                                <group col="4">
+                                    <separator string="Log" colspan="4"/>
+                                    <field name="err_mail" />
+                                    <field name="log_dir_id" colspan="4" domain="[('type','=','directory')]"/>
+                                    <field name="log_filename" colspan="4"/>
+                                </group>
+                                <group col="4">
+                                    <separator string="Reject" colspan="4"/>
+                                    <field name="err_reject" colspan="4"/>
+                                    <field name="reject_dir_id" colspan="4" domain="[('type','=','directory')]"/>
+                                    <field name="reject_filename" colspan="4"/>
+                                </group>
+                                <group col="4">
+                                    <separator string="Backup" colspan="4"/>
+                                    <field name="backup" colspan="4"/>
+                                    <field name="backup_dir_id" colspan="4" domain="[('type','=','directory')]"/>
+                                    <field name="backup_filename" colspan="4"/>
+                                </group>
+                            </group>
+                            <group col="6" colspan="4">
+                                <separator string="Legend to format filename" colspan="6"/>
+                                <label align="0.0" string="%%Y for Year (eg: 2009)" colspan="2"/>
+                                <label align="0.0" string="%%H for Hour (eg: 14)" colspan="2"/>
+                                <label align="0.0" string="%%j for day of the year (eg: 365)" colspan="2"/>
+                                <label align="0.0" string="%%m for Month (eg: 09)" colspan="2"/>
+                                <label align="0.0" string="%%M for Minutes (eg: 59)" colspan="2"/>
+                                <label align="0.0" string="%%U for Week number of the year" colspan="2"/>
+                                <label align="0.0" string="%%d for Day (eg: 01)" colspan="2"/>
+                                <label align="0.0" string="%%S for Second (eg: 01)" colspan="2"/>
+                                <label align="0.0" string="%%y for year in 2 digits" colspan="2"/>
+                            </group>
+                        </page>
+                        <page string="Email" attrs="{'invisible': [('err_mail','!=', True)]}">
+                            <group colspan="4" col="12">
+                                <separator string="From" colspan="4"/>
+                                <field name="mail_from" colspan="12" nolabel="1"/>
+                                <group colspan="6" col="4" string="On success">
+                                    <separator string="To" colspan="4"/>
+                                    <field name="mail_cc" colspan="4" nolabel="1"/>
+                                    <separator string="Subject" colspan="4"/>
+                                    <field name="mail_subject" colspan="4" nolabel="1"/>
+                                    <separator string="Mail body" colspan="4"/>
+                                    <field name="mail_body" colspan="4" nolabel="1" height="400"/>
+                                </group>
+                                <group colspan="6" col="4" string="On error">
+                                    <separator string="To" colspan="4"/>
+                                    <field name="mail_cc_err" colspan="4" nolabel="1"/>
+                                    <separator string="Subject" colspan="4"/>
+                                    <field name="mail_subject_err" colspan="4" nolabel="1"/>
+                                    <separator string="Mail body" colspan="4"/>
+                                    <field name="mail_body_err" colspan="4" nolabel="1" height="400"/>
+                                </group>
+                                <separator string="Legend to format mail" colspan="12"/>
+                                <label align="0.0" string="%%(count)s: Number of imported lines" colspan="4"/>
+                            </group>
+                        </page>
+                        <page string="Notes">
+                            <field name="notes" nolabel="1" colspan="4"/>
+                        </page>
+                    </notebook>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_document_import_list" model="ir.actions.act_window">
+            <field name="name">Document import list</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">document.import.list</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'import': True}</field>
+            <field name="domain">[]</field>
+        </record>
+
+        <record id="action_document_import_list_view_tree" model="ir.actions.act_window.view">
+            <field name="sequence" eval="10"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_document_import_list_tree"/>
+            <field name="act_window_id" ref="action_document_import_list"/>
+        </record>
+
+        <record id="action_document_import_list_view_form" model="ir.actions.act_window.view">
+            <field name="sequence" eval="20"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_document_import_list_form"/>
+            <field name="act_window_id" ref="action_document_import_list"/>
+        </record>
+
+        <menuitem action="action_document_import_list" id="menu_document_import_list"
+            parent="menu_document_import_configuration" sequence="10"/>
+
+
+    </data>
+</openerp>

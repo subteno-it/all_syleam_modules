@@ -1,0 +1,74 @@
+-
+    15. Create and confirm picking
+-
+    # Create the first stock location
+    !record {model: stock.location, id: wms_routing_stock_location_test15_location1}:
+        name: 'Stock routing Test 15 - Location 1'
+-
+    # Create the second stock location
+    !record {model: stock.location, id: wms_routing_stock_location_test15_location2}:
+        name: 'Stock routing Test 15 - Location 2'
+-
+    # Create the first stock round
+    !record {model: stock.round, id: wms_routing_stock_round_test15_round1}:
+        name: 'Stock routing Test 15 - Round 1'
+        location_id: wms_routing_stock_location_test15_location1
+-
+    # Create the second stock round
+    !record {model: stock.round, id: wms_routing_stock_round_test15_round2}:
+        name: 'Stock routing Test 15 - Round 2'
+        location_id: wms_routing_stock_location_test15_location2
+-
+    # Create the partner
+    !record {model: res.partner, id: wms_routing_res_partner_test15}:
+        name: Stock routing Test 15
+        round_id: wms_routing_stock_round_test15_round1
+-
+    # Create the partner address
+    !record {model: res.partner.address, id: wms_routing_res_partner_address_test15}:
+        name: Stock routing Test 15
+        partner_id: wms_routing_res_partner_test15
+        round_id: wms_routing_stock_round_test15_round2
+-
+    # Create the sale order
+    !record {model: sale.order, id: wms_routing_sale_order_test15}:
+        name: Stock routing Test 15
+        partner_id: wms_routing_res_partner_test15
+        partner_order_id: wms_routing_res_partner_address_test15
+        partner_invoice_id: wms_routing_res_partner_address_test15
+        partner_shipping_id: wms_routing_res_partner_address_test15
+        pricelist_id: product.list0
+        order_line:
+            -
+                name: Stock routing Test 15
+                product_id: product.product_product_cpu1
+                product_uom: product.product_uom_unit
+                product_uom_qty: 5
+-
+    # Create the stock picking
+    !record {model: stock.picking, id: wms_routing_stock_picking_test15}:
+        name: Stock routing Test 15
+        type: out
+        partner_id: wms_routing_res_partner_test15
+        address_id: wms_routing_res_partner_address_test15
+        sale_id: wms_routing_sale_order_test15
+        move_lines:
+            -
+                name: Stock routing Test 15
+                product_id: product.product_product_cpu1
+                product_uom: product.product_uom_unit
+                product_qty: 5
+                location_id: stock.stock_location_stock
+                location_dest_id: stock.stock_location_output
+-
+    # Confirm the stock picking
+    !workflow {model: stock.picking, action: button_confirm, ref: wms_routing_stock_picking_test15}
+-
+    # Assert the round on the picking
+    !assert {model: stock.picking, id: wms_routing_stock_picking_test15, string: 'Round on the picking'}:
+        - round_id.id == ref('wms_routing_stock_round_test15_round2')
+-
+    # Assert the location_dest_id on the moves
+    !assert {model: stock.move, search: "[('picking_id', '=', ref(\"wms_routing_stock_picking_test15\"))]", string: 'Location on the moves'}:
+        - location_dest_id.id == ref('wms_routing_stock_location_test15_location2')
+

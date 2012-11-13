@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        ##############################################################################
+        #
+        #    wms_routing module for OpenERP, This module allows to assing rounds to orders to set default locations automatically on moves
+        #    Copyright (C) 2011 SYLEAM Info Services ([http://www.Syleam.fr/]) 
+        #              Sylvain Garancher [sylvain.garancher@syleam.fr]
+        #
+        #    This file is a part of wms_routing
+        #
+        #    wms_routing is free software: you can redistribute it and/or modify
+        #    it under the terms of the GNU General Public License as published by
+        #    the Free Software Foundation, either version 3 of the License, or
+        #    (at your option) any later version.
+        #
+        #    wms_routing is distributed in the hope that it will be useful,
+        #    but WITHOUT ANY WARRANTY; without even the implied warranty of
+        #    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        #    GNU General Public License for more details.
+        #
+        #    You should have received a copy of the GNU General Public License
+        #    along with this program.  If not, see [http://www.gnu.org/licenses/].
+        #
+        ##############################################################################
+
+        <record id="view_stock_round_tree" model="ir.ui.view">
+            <field name="name">stock.round.tree</field>
+            <field name="model">stock.round</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <tree string="Round" editable="bottom">
+                    <field name="name"/>
+                    <field name="location_id"/>
+                    <field name="company_id" widget="selection" groups="base.group_multi_company"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_stock_round_form" model="ir.ui.view">
+            <field name="name">stock.round.form</field>
+            <field name="model">stock.round</field>
+            <field name="type">form</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <form string="Round">
+                    <field name="name" select="1"/>
+                    <field name="location_id"/>
+                    <field name="company_id" widget="selection" groups="base.group_multi_company"/>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="act_open_stock_round_view">
+            <field name="name">Round</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">stock.round</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="act_open_stock_round_view_form">
+            <field name="act_window_id" ref="act_open_stock_round_view"/>
+            <field name="sequence" eval="20"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_stock_round_form"/>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="act_open_stock_round_view_tree">
+            <field name="act_window_id" ref="act_open_stock_round_view"/>
+            <field name="sequence" eval="10"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_stock_round_tree"/>
+        </record>
+
+        <menuitem id="menu_stock_round"
+            parent="stock.menu_stock_configuration"
+            sequence="20"
+            action="act_open_stock_round_view"/>
+
+    </data>
+</openerp>

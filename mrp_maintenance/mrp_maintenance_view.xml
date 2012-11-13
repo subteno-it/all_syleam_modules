@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        ##############################################################################
+        #
+        #    mrp_maintenance module for OpenERP, Manage maintenance in production order
+        #    Copyright (C) 2012 SYLEAM Info Services ([http://www.syleam.fr/]) 
+        #              Sebastien LANGE [sebastien.lange@syleam.fr]
+        #
+        #    This file is a part of mrp_maintenance
+        #
+        #    mrp_maintenance is free software: you can redistribute it and/or modify
+        #    it under the terms of the GNU Affero General Public License as published by
+        #    the Free Software Foundation, either version 3 of the License, or
+        #    (at your option) any later version.
+        #
+        #    mrp_maintenance is distributed in the hope that it will be useful,
+        #    but WITHOUT ANY WARRANTY; without even the implied warranty of
+        #    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        #    GNU Affero General Public License for more details.
+        #
+        #    You should have received a copy of the GNU Affero General Public License
+        #    along with this program.  If not, see [http://www.gnu.org/licenses/].
+        #
+        ##############################################################################
+
+
+        <record id="view_mrp_maintenance_type_tree" model="ir.ui.view">
+            <field name="name">mrp.maintenance.type.tree</field>
+            <field name="model">mrp.maintenance.type</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <tree string="Type Of Maintenance" editable="bottom">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="is_invoice"/>
+                    <field name="type"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_mrp_maintenance_type_form" model="ir.ui.view">
+            <field name="name">mrp.maintenance.type.form</field>
+            <field name="model">mrp.maintenance.type</field>
+            <field name="type">form</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <form string="Type Of Maintenance">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="is_invoice"/>
+                    <field name="type"/>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_mrp_maintenance_type_search" model="ir.ui.view">
+            <field name="name">mrp.maintenance.type.search</field>
+            <field name="model">mrp.maintenance.type</field>
+            <field name="type">search</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <search string="Type Of Maintenance">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="type"/>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="act_open_mrp_maintenance_type_view">
+            <field name="name">Type Of Maintenance</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">mrp.maintenance.type</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_mrp_maintenance_type_search"/>
+            <field name="context">{}</field>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="act_open_mrp_maintenance_type_view_form">
+            <field name="act_window_id" ref="act_open_mrp_maintenance_type_view"/>
+            <field name="sequence" eval="20"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_mrp_maintenance_type_form"/>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="act_open_mrp_maintenance_type_view_tree">
+            <field name="act_window_id" ref="act_open_mrp_maintenance_type_view"/>
+            <field name="sequence" eval="10"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_mrp_maintenance_type_tree"/>
+        </record>
+
+        <menuitem id="menu_mrp_maintenance_type"
+            parent="mrp.menu_mrp_configuration"
+            sequence="40"
+            action="act_open_mrp_maintenance_type_view"/>
+
+    </data>
+</openerp>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        ##############################################################################
+        #
+        #    mrp_maintenance module for OpenERP, Manage maintenance in production order
+        #    Copyright (C) 2012 SYLEAM Info Services ([http://www.syleam.fr/]) 
+        #              Sebastien LANGE [sebastien.lange@syleam.fr]
+        #
+        #    This file is a part of mrp_maintenance
+        #
+        #    mrp_maintenance is free software: you can redistribute it and/or modify
+        #    it under the terms of the GNU Affero General Public License as published by
+        #    the Free Software Foundation, either version 3 of the License, or
+        #    (at your option) any later version.
+        #
+        #    mrp_maintenance is distributed in the hope that it will be useful,
+        #    but WITHOUT ANY WARRANTY; without even the implied warranty of
+        #    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        #    GNU Affero General Public License for more details.
+        #
+        #    You should have received a copy of the GNU Affero General Public License
+        #    along with this program.  If not, see [http://www.gnu.org/licenses/].
+        #
+        ##############################################################################
+
+        <record id="view_mrp_production_form" model="ir.ui.view">
+            <field name="name">mrp.production.form</field>
+            <field name="model">mrp.production</field>
+            <field name="type">form</field>
+            <field name="priority" eval="32"/>
+            <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="/form/group/label[@string='']" position="replace">
+                    <field name="prodlot_id"/>
+                </xpath>
+                <xpath expr="/form/group/field[@name='product_uos']" position="after">
+                    <newline/>
+                    <field name="partner_id"/>
+                    <field name="sale_id"/>
+                    <field name="maintenance_type_id" colspan="2" widget="selection"/>
+                </xpath>
+                <xpath expr="/form/notebook/page/field[@name='move_prod_id']" position="after">
+                    <separator string="Notes From Sale Order" colspan="4"/>
+                    <field name="sale_line_notes" nolabel="1" colspan="4"/>
+                    <separator string="Notes" colspan="4"/>
+                    <field name="notes" nolabel="1" colspan="4"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_mrp_production_tree" model="ir.ui.view">
+            <field name="name">mrp.production.tree</field>
+            <field name="model">mrp.production</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="32"/>
+            <field name="inherit_id" ref="mrp.mrp_production_tree_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='state']" position="after">
+                    <field name="invoice_state"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_mrp_production_filter" model="ir.ui.view">
+            <field name="name">mrp.production.select</field>
+            <field name="model">mrp.production</field>
+            <field name="type">search</field>
+            <field name="priority" eval="32"/>
+            <field name="inherit_id" ref="mrp.view_mrp_production_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//filter[@string='Late']" position="after">
+                    <filter icon="terp-dolar_ok!" string="Uninvoiced" name="uninvoiced"
+                        domain="[('invoice_state', '=', '2binvoiced'),('state', '=', 'done')]"
+                        help="Production Order that are done state and haven't yet been invoiced"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!--  Add menu: Billing - Production orders to invoice -->
+        <record id="production_list_to_invoice" model="ir.actions.act_window">
+            <field name="name">Maintenance to Invoice</field>
+            <field name="res_model">mrp.production</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,calendar</field>
+            <field name="context">{'search_default_uninvoiced': 1}</field>
+            <field name="search_view_id" ref="mrp.view_mrp_production_filter"/>
+        </record>
+        <menuitem action="production_list_to_invoice" id="menu_action_production_list_to_invoice" parent="base.menu_invoiced" sequence="40"/>
+
+        <act_window
+            context="{'search_default_production_id': [active_id], 'default_production_id': active_id, 'search_default_partner_id': [partner_id], 'default_partner_id': partner_id, 'default_order_policy': 'picking'}"
+            domain="[('production_id', '=', active_id)]"
+            id="act_mrp_production_2_sale_order"
+            name="Add products"
+            res_model="sale.order"
+            src_model="mrp.production"/>
+
+        <!-- List linked internal pickings -->
+        <record id="act_mrp_production_to_stock_pickings" model="ir.actions.server">
+            <field name="name">Linked internal pickings</field>
+            <field name="model_id" ref="mrp.model_mrp_production"/>
+            <field name="state">code</field>
+            <field name="condition">True</field>
+            <field name="code">sale_obj = self.pool.get('sale.order')
+sale_ids = sale_obj.search(cr, uid, [('production_id', '=', object.id)], context=context)
+picking_ids = []
+for sale in sale_obj.browse(cr, uid, sale_ids, context=context):
+    for picking in sale.picking_ids:
+        picking_ids.append(picking.id)
+ir_obj = self.pool.get('ir.model.data')
+action_info = ir_obj.get_object_reference(cr, uid, 'stock', 'action_picking_tree6')
+action_model = action_info[0]
+action_id = action_info[1]
+action_data = self.pool.get(action_model).read(cr, uid, action_id, [], context=context)
+action_data['domain'] = [('id', 'in', picking_ids)]
+action_data['context'] = {'contact_display': 'partner_address'}
+action = action_data</field>
+        </record>
+        <record id="ir_mrp_to_picking_list_relate" model="ir.values">
+            <field name="key2">client_action_relate</field>
+            <field name="model">mrp.production</field>
+            <field name="name">Linked internal pickings</field>
+            <field name="value" eval="'ir.actions.server,'+str(act_mrp_production_to_stock_pickings)"/>
+            <field name="object" eval="True"/>
+        </record>
+
+    </data>
+</openerp>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        ##############################################################################
+        #
+        #    mrp_maintenance module for OpenERP, Manage maintenance in production order
+        #    Copyright (C) 2012 SYLEAM Info Services ([http://www.syleam.fr/]) 
+        #              Sebastien LANGE [sebastien.lange@syleam.fr]
+        #
+        #    This file is a part of mrp_maintenance
+        #
+        #    mrp_maintenance is free software: you can redistribute it and/or modify
+        #    it under the terms of the GNU Affero General Public License as published by
+        #    the Free Software Foundation, either version 3 of the License, or
+        #    (at your option) any later version.
+        #
+        #    mrp_maintenance is distributed in the hope that it will be useful,
+        #    but WITHOUT ANY WARRANTY; without even the implied warranty of
+        #    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        #    GNU Affero General Public License for more details.
+        #
+        #    You should have received a copy of the GNU Affero General Public License
+        #    along with this program.  If not, see [http://www.gnu.org/licenses/].
+        #
+        ##############################################################################
+
+        <record id="view_mrp_maintenance_invoice" model="ir.ui.view">
+            <field name="name">MRP Maintenance Invoice</field>
+            <field name="model">mrp.maintenance.invoice</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Create invoice">
+                    <separator colspan="4" string="Create invoice" />
+                    <field name="journal_id"/>
+                    <newline/>
+                    <field name="invoice_date" />
+                    <separator string="" colspan="4" />
+                    <button special="cancel" string="_Cancel" icon='gtk-cancel'/>
+                    <button name="open_invoice" string="Create" type="object" icon="terp-gtk-go-back-rtl"/>
+                </form>
+            </field>
+        </record>
+
+
+        <act_window name="Create invoice"
+            res_model="mrp.maintenance.invoice"
+            src_model="mrp.production"
+            key2="client_action_multi"
+            multi="True"
+            view_mode="form"
+            view_type="form"
+            target="new"
+            id="action_mrp_maintenance_invoice"/>
+
+    </data>
+</openerp>

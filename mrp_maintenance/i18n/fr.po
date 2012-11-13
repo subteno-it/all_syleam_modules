@@ -1,0 +1,244 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* mrp_maintenance
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 6.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-09-16 20:21+0000\n"
+"PO-Revision-Date: 2012-09-16 20:21+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: mrp_maintenance
+#: sql_constraint:sale.order:0
+msgid "Order Reference must be unique per Company!"
+msgstr "La référence de commande doit être unique par société!"
+
+#. module: mrp_maintenance
+#: view:sale.order:0
+msgid "Work Orders"
+msgstr "Ordre de fabrication"
+
+#. module: mrp_maintenance
+#: field:mrp.production,invoice_state:0
+msgid "Invoice Control"
+msgstr "Facturation"
+
+#. module: mrp_maintenance
+#: view:mrp.maintenance.invoice:0
+msgid "Create"
+msgstr "Créer"
+
+#. module: mrp_maintenance
+#: field:sale.order,production_id:0
+msgid "Production"
+msgstr "Production"
+
+#. module: mrp_maintenance
+#: model:ir.model,name:mrp_maintenance.model_mrp_workcenter
+msgid "Work Center"
+msgstr "Poste de charge"
+
+#. module: mrp_maintenance
+#: field:sale.order,is_maintenance:0
+msgid "Maintenance"
+msgstr "Maintenance"
+
+#. module: mrp_maintenance
+#: model:ir.model,name:mrp_maintenance.model_stock_picking
+msgid "Picking List"
+msgstr "Opération de manutention"
+
+#. module: mrp_maintenance
+#: model:ir.model,name:mrp_maintenance.model_mrp_production_workcenter_line
+msgid "Work Order"
+msgstr "Ordre de fabrication"
+
+#. module: mrp_maintenance
+#: field:mrp.maintenance.invoice,journal_id:0
+msgid "Destination Journal"
+msgstr "Destination Journal"
+
+#. module: mrp_maintenance
+#: model:ir.model,name:mrp_maintenance.model_sale_order
+msgid "Sales Order"
+msgstr "Commande de ventes"
+
+#. module: mrp_maintenance
+#: help:mrp.production,sale_line_notes:0
+msgid "Notes from sale order line"
+msgstr "Notes from sale order line"
+
+#. module: mrp_maintenance
+#: field:mrp.production.workcenter.line,sale_id:0
+msgid "Sale order"
+msgstr "Bon de commande"
+
+#. module: mrp_maintenance
+#: model:ir.actions.act_window,name:mrp_maintenance.action_sale_order_form
+#: model:ir.ui.menu,name:mrp_maintenance.menu_sale_order
+msgid "Sales Orders"
+msgstr "Bons de commande"
+
+#. module: mrp_maintenance
+#: model:ir.actions.act_window,name:mrp_maintenance.action_mrp_maintenance_invoice
+#: view:mrp.maintenance.invoice:0
+msgid "Create invoice"
+msgstr "Créer une facture"
+
+#. module: mrp_maintenance
+#: field:sale.order,workcenter_line_ids:0
+msgid "Workcenter lines"
+msgstr "Postes de charge"
+
+#. module: mrp_maintenance
+#: model:ir.model,name:mrp_maintenance.model_mrp_production
+msgid "Manufacturing Order"
+msgstr "Ordre de fabrication"
+
+#. module: mrp_maintenance
+#: constraint:mrp.production:0
+msgid "Order quantity cannot be negative or zero!"
+msgstr "La quantité commandée ne peut pas être nulle ou négative !"
+
+#. module: mrp_maintenance
+#: selection:mrp.production,invoice_state:0
+msgid "To Be Invoiced"
+msgstr "À facturer"
+
+#. module: mrp_maintenance
+#: help:mrp.production,sale_id:0
+msgid "Sale order linked to this production order."
+msgstr "Sale order linked to this production order."
+
+#. module: mrp_maintenance
+#: view:mrp.maintenance.invoice:0
+msgid "_Cancel"
+msgstr "Annuler"
+
+#. module: mrp_maintenance
+#: view:mrp.production:0
+#: field:mrp.production,sale_line_notes:0
+msgid "Notes"
+msgstr "Notes"
+
+#. module: mrp_maintenance
+#: field:mrp.production,sale_id:0
+msgid "Sale Order"
+msgstr "Bon de commande"
+
+#. module: mrp_maintenance
+#: model:ir.model,name:mrp_maintenance.model_procurement_order
+msgid "Procurement"
+msgstr "Approvisionnement"
+
+#. module: mrp_maintenance
+#: field:mrp.maintenance.invoice,invoice_date:0
+msgid "Invoiced date"
+msgstr "Date de facturation"
+
+#. module: mrp_maintenance
+#: sql_constraint:mrp.production:0
+#: sql_constraint:stock.picking:0
+msgid "Reference must be unique per Company!"
+msgstr "La référence doit être unique par société !"
+
+#. module: mrp_maintenance
+#: model:ir.actions.act_window,name:mrp_maintenance.production_list_to_invoice
+#: model:ir.ui.menu,name:mrp_maintenance.menu_action_production_list_to_invoice
+msgid "Maintenance to Invoice"
+msgstr "Maintenance à facturer"
+
+#. module: mrp_maintenance
+#: selection:mrp.production,invoice_state:0
+msgid "Not Applicable"
+msgstr "Non applicable"
+
+#. module: mrp_maintenance
+#: help:sale.order,production_id:0
+msgid "Production order has needed product"
+msgstr "Production order has needed product"
+
+#. module: mrp_maintenance
+#: help:mrp.production,partner_id:0
+msgid "Partner linked to this production order"
+msgstr "Client lié à cet ordre de production"
+
+#. module: mrp_maintenance
+#: field:mrp.production,prodlot_id:0
+#: field:sale.order.line,prodlot_id:0
+msgid "Production Lot"
+msgstr "Lot de fabrication"
+
+#. module: mrp_maintenance
+#: help:mrp.production,prodlot_id:0
+#: help:sale.order.line,prodlot_id:0
+msgid "Production lot is used to put a serial number on the production"
+msgstr "Production lot is used to put a serial number on the production"
+
+#. module: mrp_maintenance
+#: model:ir.model,name:mrp_maintenance.model_mrp_maintenance_invoice
+msgid "MRP Maintenance Invoice"
+msgstr "MRP Maintenance Invoice"
+
+#. module: mrp_maintenance
+#: model:ir.actions.act_window,name:mrp_maintenance.act_mrp_production_2_sale_order
+msgid "Add products"
+msgstr "Ajouter des produits"
+
+#. module: mrp_maintenance
+#: view:sale.order:0
+msgid "Production Work Centers"
+msgstr "Production Work Centers"
+
+#. module: mrp_maintenance
+#: model:ir.ui.menu,name:mrp_maintenance.menu_mrp_sales
+msgid "Sales"
+msgstr "Ventes"
+
+#. module: mrp_maintenance
+#: field:mrp.production,sale_line_id:0
+msgid "Sale Line"
+msgstr "Ligne de vente"
+
+#. module: mrp_maintenance
+#: view:mrp.production:0
+msgid "Uninvoiced"
+msgstr "Non-facturé"
+
+#. module: mrp_maintenance
+#: model:ir.actions.act_window,help:mrp_maintenance.action_sale_order_form
+msgid "Sales Orders help you manage quotations and orders from your customers. OpenERP suggests that you start by creating a quotation. Once it is confirmed, the quotation will be converted into a Sales Order. OpenERP can handle several types of products so that a sales order may trigger tasks, delivery orders, manufacturing orders, purchases and so on. Based on the configuration of the sales order, a draft invoice will be generated so that you just have to confirm it when you want to bill your customer."
+msgstr "Les bons de commande vous aident à gérer les devis et les commandes de vos clients. OpenERP vous suggère de commencer par créer un devis. Lorsqu'il sera confirmé, le devis sera convertit en bon de commande. OpenERP peut prendre en charge plusieurs types de produits pour que les bons de commande déclenchent des tâches, des bons de livraison, des ordres de production, des achats, et d'autres choses. Basée sur la configuration des bons de commande, une facture à l'état \"Brouillon\" sera générée, vous n'aurez alors plus qu'à la confirmer pour facturer votre client."
+
+#. module: mrp_maintenance
+#: view:mrp.production:0
+msgid "Production Order that are done state and haven't yet been invoiced"
+msgstr "Production Order that are done state and haven't yet been invoiced"
+
+#. module: mrp_maintenance
+#: field:mrp.production,partner_id:0
+msgid "Partner"
+msgstr "Client"
+
+#. module: mrp_maintenance
+#: help:sale.order,is_maintenance:0
+msgid "If set, this sale order is maintenance order"
+msgstr "If set, this sale order is maintenance order"
+
+#. module: mrp_maintenance
+#: model:ir.model,name:mrp_maintenance.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Ligne de commandes de vente"
+
+#. module: mrp_maintenance
+#: selection:mrp.production,invoice_state:0
+msgid "Invoiced"
+msgstr "Facturé"
+

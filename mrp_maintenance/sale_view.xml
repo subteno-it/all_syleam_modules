@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        ##############################################################################
+        #
+        #    mrp_maintenance module for OpenERP, Manage maintenance in production order
+        #    Copyright (C) 2012 SYLEAM Info Services ([http://www.syleam.fr/]) 
+        #              Sebastien LANGE [sebastien.lange@syleam.fr]
+        #
+        #    This file is a part of mrp_maintenance
+        #
+        #    mrp_maintenance is free software: you can redistribute it and/or modify
+        #    it under the terms of the GNU Affero General Public License as published by
+        #    the Free Software Foundation, either version 3 of the License, or
+        #    (at your option) any later version.
+        #
+        #    mrp_maintenance is distributed in the hope that it will be useful,
+        #    but WITHOUT ANY WARRANTY; without even the implied warranty of
+        #    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        #    GNU Affero General Public License for more details.
+        #
+        #    You should have received a copy of the GNU Affero General Public License
+        #    along with this program.  If not, see [http://www.gnu.org/licenses/].
+        #
+        ##############################################################################
+
+        <record id="view_sale_order_form" model="ir.ui.view">
+            <field name="name">sale.order.form</field>
+            <field name="model">sale.order</field>
+            <field name="type">form</field>
+            <field name="priority" eval="32"/>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='invoice_quantity']" position="after">
+                    <field name="is_maintenance" invisible="1"/>
+                </xpath>
+                <xpath expr="/form/notebook/page/field/form/notebook/page/group/field[@name='notes']" position="after">
+                    <field name="prodlot_id" colspan="2" domain="[('product_id','=', product_id)]"/>
+                    <field name="maintenance_type_id" colspan="2" widget="selection"/>
+                </xpath>
+                <xpath expr="/form/notebook" position="inside">
+                    <page string="Work Orders" attrs="{'invisible': [('is_maintenance', '=', False)]}">
+                        <field colspan="4" name="workcenter_line_ids" nolabel="1">
+                            <form string="Production Work Centers">
+                                <field colspan="4" name="name"/>
+                                <field name="workcenter_id" widget="selection"/>
+                                <field name="hour" widget="float_time"/>
+                            </form>
+                            <tree string="Production Work Centers" editable="top">
+                                <field name="name"/>
+                                <field name="workcenter_id" widget="selection"/>
+                                <field name="hour" widget="float_time"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+                <xpath expr="//field[@name='origin']" position="after">
+                    <field name="production_id"/>
+                </xpath>
+            </field>
+        </record>
+
+        <menuitem id="menu_mrp_sales" name="Sales"
+            parent="base.menu_mrp_root" sequence="0"
+            />
+
+        <record id="sale.action_order_form" model="ir.actions.act_window">
+            <field name="domain">[('is_maintenance', '=', False), ('production_id', '=', False)]</field>
+        </record>
+        <record id="action_sale_order_form" model="ir.actions.act_window">
+            <field name="name">Sales Orders</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,calendar,graph</field>
+            <field name="search_view_id" ref="sale.view_sales_order_filter"/>
+            <field name="domain">[('is_maintenance', '=', True)]</field>
+            <field name="context">{'default_is_maintenance': True, 'default_order_policy': 'picking'}</field>
+            <field name="help">Sales Orders help you manage quotations and orders from your customers. OpenERP suggests that you start by creating a quotation. Once it is confirmed, the quotation will be converted into a Sales Order. OpenERP can handle several types of products so that a sales order may trigger tasks, delivery orders, manufacturing orders, purchases and so on. Based on the configuration of the sales order, a draft invoice will be generated so that you just have to confirm it when you want to bill your customer.</field>
+        </record>
+        <menuitem action="action_sale_order_form" id="menu_sale_order" parent="menu_mrp_sales" sequence="3" groups="base.group_sale_salesman,base.group_sale_manager"/>
+
+    </data>
+</openerp>

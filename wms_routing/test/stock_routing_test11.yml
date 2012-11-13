@@ -1,0 +1,40 @@
+-
+    11. Auto filling of the form
+-
+    # Create the first stock round
+    !record {model: stock.round, id: wms_routing_stock_round_test11_round1}:
+        name: 'Stock routing Test 11 - Round 1'
+-
+    # Create the second stock round
+    !record {model: stock.round, id: wms_routing_stock_round_test11_round2}:
+        name: 'Stock routing Test 11 - Round 2'
+-
+    # Create the partner
+    !record {model: res.partner, id: wms_routing_res_partner_test11}:
+        name: Stock routing Test 11
+        round_id: wms_routing_stock_round_test11_round1
+-
+    # Create the partner address
+    !record {model: res.partner.address, id: wms_routing_res_partner_address_test11}:
+        name: Stock routing Test 11
+-
+    # Create the sale order
+    !record {model: sale.order, id: wms_routing_sale_order_test11}:
+        name: Stock routing Test 11
+        partner_id: wms_routing_res_partner_test11
+        partner_order_id: wms_routing_res_partner_address_test11
+        partner_invoice_id: wms_routing_res_partner_address_test11
+        partner_shipping_id: wms_routing_res_partner_address_test11
+        round_id: wms_routing_stock_round_test11_round2
+        pricelist_id: product.list0
+        order_line:
+            -
+                name: Stock routing Test 11
+                product_id: product.product_product_cpu1
+                product_uom: product.product_uom_unit
+                product_uom_qty: 5
+-
+    # Call the "onchange_shipping_address" method for the sale order and check the returned value
+    !assert {model: sale.order, id: wms_routing_sale_order_test11, string: Automatic form filling}:
+        - onchange_shipping_address(partner_id.id, partner_shipping_id.id, round_id.id) == {}
+

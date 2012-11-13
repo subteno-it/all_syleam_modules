@@ -1,0 +1,3 @@
+"id","name","model_id/id","group_id/id","perm_read","perm_write","perm_create","perm_unlink"
+"stock_round_user","stock_round_user","wms_routing.model_stock_round","","True","","",""
+"stock_round_manager","stock_round_manager","wms_routing.model_stock_round","stock.group_stock_manager","True","True","True","True"
